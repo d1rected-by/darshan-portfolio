@@ -31,21 +31,21 @@ const reels = [
     title: "Cinematic Edit Collaboration Reel",
     category: "CINEMATIC EDITING",
     file: "/portfolio/reels/cinematic-edit-collaboration.mp4",
-    thumbnail: "/portfolio/reels/img1.jpg",
+    thumbnail: "/portfolio-optimized/reels/img1.webp",
   },
   {
     number: "02",
     title: "Cinematic Reel Edit",
     category: "REEL EDITING",
     file: "/portfolio/reels/cinematic-reel-edit.mp4",
-    thumbnail: "/portfolio/reels/img2.jpg",
+    thumbnail: "/portfolio-optimized/reels/img2.webp",
   },
   {
     number: "03",
     title: "Product Shoot and Edit",
     category: "PRODUCT VIDEO",
     file: "/portfolio/reels/product-shoot-edit.mp4",
-    thumbnail: "/portfolio/reels/img3.jpg",
+    thumbnail: "/portfolio-optimized/reels/img3.webp",
   },
 ];
 
@@ -53,41 +53,41 @@ const graphics = Array.from(
   { length: 13 },
   (_, index) => ({
     number: String(index + 1).padStart(2, "0"),
-    file: `/portfolio/graphics/Post ${index + 1}.png`,
+    file: `/portfolio-optimized/graphics/Post ${index + 1}.webp`,
   })
 );
 
 const thumbnails = [
   {
     number: "01",
-    file: "/portfolio/graphics/YT Thumbnail 1.png",
+    file: "/portfolio-optimized/graphics/YT Thumbnail 1.webp",
   },
   {
     number: "02",
-    file: "/portfolio/graphics/YT Thumbnail 2.png",
+    file: "/portfolio-optimized/graphics/YT Thumbnail 2.webp",
   },
 ];
 
 const socialProjects = [
   {
     number: "01",
-    file: "/portfolio/social/IMG_5548.PNG",
+    file: "/portfolio-optimized/social/IMG_5548.webp",
   },
   {
     number: "02",
-    file: "/portfolio/social/IMG_5549.PNG",
+    file: "/portfolio-optimized/social/IMG_5549.webp",
   },
   {
     number: "03",
-    file: "/portfolio/social/IMG_5550.PNG",
+    file: "/portfolio-optimized/social/IMG_5550.webp",
   },
   {
     number: "04",
-    file: "/portfolio/social/IMG_5551.PNG",
+    file: "/portfolio-optimized/social/IMG_5551.webp",
   },
   {
     number: "05",
-    file: "/portfolio/social/IMG_5552.PNG",
+    file: "/portfolio-optimized/social/IMG_5552.webp",
   },
 ];
 
@@ -120,7 +120,7 @@ const projections = [
   "IMG_2154.jpg",
 ].map((file, index) => ({
   number: String(index + 1).padStart(2, "0"),
-  file: `/portfolio/photography/Projections/${file}`,
+  file: `/portfolio-optimized/photography/Projections/${file.replace(/\.jpg$/i, ".webp")}`,
 }));
 
 const vlf = [
@@ -142,7 +142,7 @@ const vlf = [
   "IMG_0550.jpg",
 ].map((file, index) => ({
   number: String(index + 1).padStart(2, "0"),
-  file: `/portfolio/photography/VLF/${file}`,
+  file: `/portfolio-optimized/photography/VLF/${file.replace(/\.jpg$/i, ".webp")}`,
 }));
 
 /* =========================
@@ -249,6 +249,8 @@ function ImageLightbox({
         className={`${className} portfolio-image-trigger`}
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         onDoubleClick={() => setOpen(true)}
       />
 
@@ -274,6 +276,7 @@ function ImageLightbox({
               className="lightbox-image"
               src={src}
               alt={alt}
+              decoding="async"
               onClick={(event) =>
                 event.stopPropagation()
               }
